@@ -1,25 +1,27 @@
 const request = require('request');
 const yargs = require('yargs');
 
-const argv = yargs
-  .options ({
-    a : {
-      demand : true,
-      decribe : 'Address to fetch weather for',
-      alias : 'address',
-      string : true
-    }
-  })
-  .help()
-  .alias('help','h')
-  .argv;
+// const argv = yargs
+//   .options ({
+//     a : {
+//       demand : true,
+//       decribe : 'Address to fetch weather for',
+//       alias : 'address',
+//       string : true
+//     }
+//   })
+//   .help()
+//   .alias('help','h')
+//   .argv;
 
-var encodedAddress = encodeURIComponent(argv.address);
+// var encodedAddress = encodeURIComponent(argv.address);
 
 // console.log(argv);
 
+
+var requestCoordinate = (address) => {
 request({
-  url : `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}`,
+  url : `https://maps.googleapis.com/maps/api/geocode/json?address=${address}`,
   json : true
 },(error, response, body) => {
   //we use stringify() here to format the output
@@ -29,3 +31,9 @@ request({
   console.log(`Longitude: ${body.results[0].geometry.location.lng}`);
 
 });
+}
+
+module.exports = 
+  {
+  requestCoordinate;
+  }
