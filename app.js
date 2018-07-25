@@ -180,7 +180,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	switch (action) {
 		case 'pincode.request' : if(parameters != null ) {
 						var pincode = parameters.any;
-		
+						app1.requestCoordinate(pincode);
 		}
 		default:
 			//unhandled action, just send back the text
