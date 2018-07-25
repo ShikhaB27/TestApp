@@ -19,16 +19,23 @@ const yargs = require('yargs');
 // console.log(argv);
 
 
-var requestCoordinate = (address) => {
+var requestCoordinate = (address, callback) => {
 request({
   url : `https://maps.googleapis.com/maps/api/geocode/json?address=${address}`,
   json : true
 },(error, response, body) => {
   //we use stringify() here to format the output
   // console.log(JSON.stringify(body, undefined, 2));
-  console.log(`Address: ${body.results[0].formatted_address}`);
-  console.log(`Latitude: ${body.results[0].geometry.location.lat}`);
-  console.log(`Longitude: ${body.results[0].geometry.location.lng}`);
+//   console.log(`Address: ${body.results[0].formatted_address}`);
+//   console.log(`Latitude: ${body.results[0].geometry.location.lat}`);
+//   console.log(`Longitude: ${body.results[0].geometry.location.lng}`);
+  if(response.statusCode === 200){
+    callback(undefined,{
+      latitude : body.results[0].geometry.location.lat,
+      address: body.results[0].formatted_address,
+      longitude: body.results[0].geometry.location.lng
+    });
+  }
 
 });
 }
