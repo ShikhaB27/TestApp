@@ -180,7 +180,16 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	switch (action) {
 		case 'pincode.request' : if(parameters != null ) {
 						var pincode = parameters.any;
-						app1.requestCoordinate(pincode);
+						app1.requestCoordinate(pincode,(error, results) => {
+							if(error){
+								responseText = 'Error fetching the data';
+							}else {
+								responseText = 
+								`The requested address coordinates are: ${results.latitude} & ${results.longitude}`;
+							}
+						});
+			sendTextMessage(sender, responseText);
+			break;
 		}
 		default:
 			//unhandled action, just send back the text
