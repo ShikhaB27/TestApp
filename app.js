@@ -26,17 +26,17 @@ if (!config.SERVER_URL) { //used for ink to static files
 app.set('port', (process.env.PORT || 5000))
 
 //verify request came from facebook
-app.use(bodyParser.json({
-	verify: verifyRequestSignature
-}));
+// app.use(bodyParser.json({
+// 	verify: verifyRequestSignature
+// }));
 
 //serve static files in the public directory
 app.use(express.static('public'));
 
 // Process application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({
-	extended: false
-}))
+// app.use(bodyParser.urlencoded({
+// 	extended: false
+// }))
 
 // Process application/json
 app.use(bodyParser.json())
@@ -46,7 +46,6 @@ app.use(bodyParser.json())
 
 const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
 	language: "en",
-	requestSource: "fb"
 });
 const sessionIds = new Map();
 
@@ -841,25 +840,25 @@ function receivedAuthentication(event) {
  * https://developers.facebook.com/docs/graph-api/webhooks#setup
  *
  */
-function verifyRequestSignature(req, res, buf) {
-	var signature = req.headers["x-hub-signature"];
+// function verifyRequestSignature(req, res, buf) {
+// 	var signature = req.headers["x-hub-signature"];
 
-	if (!signature) {
-		throw new Error('Couldn\'t validate the signature.');
-	} else {
-		var elements = signature.split('=');
-		var method = elements[0];
-		var signatureHash = elements[1];
+// 	if (!signature) {
+// 		throw new Error('Couldn\'t validate the signature.');
+// 	} else {
+// 		var elements = signature.split('=');
+// 		var method = elements[0];
+// 		var signatureHash = elements[1];
 
-		var expectedHash = crypto.createHmac('sha1', config.FB_APP_SECRET)
-			.update(buf)
-			.digest('hex');
+// 		var expectedHash = crypto.createHmac('sha1', config.FB_APP_SECRET)
+// 			.update(buf)
+// 			.digest('hex');
 
-		if (signatureHash != expectedHash) {
-			throw new Error("Couldn't validate the request signature.");
-		}
-	}
-}
+// 		if (signatureHash != expectedHash) {
+// 			throw new Error("Couldn't validate the request signature.");
+// 		}
+// 	}
+// }
 
 function isDefined(obj) {
 	if (typeof obj == 'undefined') {
