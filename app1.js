@@ -42,5 +42,5 @@ request({
 
 module.exports = 
   {
-  requestCoordinate;
+  requestCoordinate
   }
