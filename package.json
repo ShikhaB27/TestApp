@@ -6,10 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "ShikhaBajaj",
   "license": "ISC",
   "dependencies": {
+    "apiai": "^2.0.5",
     "request": "^2.87.0",
-    "yargs": "^12.0.1"
+    "express": "^4.13.4",
+    "uuid": "^2.0.3"
   }
 }
