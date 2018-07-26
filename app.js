@@ -74,9 +74,21 @@ app.get('/webhook/', function (req, res) {
  */
 app.post('/webhook/', function (req, res) {
 	var data = req.body;
+	var paramData = req.body.parameters;
 	console.log(JSON.stringify(data));
-
-
+	console.log(JSON.stringify(paramData));
+	if(paramData != null ) {
+				var pincode = paramData.any;
+				app1.requestCoordinate(pincode,(error, results) => {
+					if(error){
+						responseText = 'Error fetching the data';
+					}else {
+						responseText = 
+						`The requested address coordinates are: ${results.latitude} & ${results.longitude}`;
+					}
+				});
+	sendTextMessage(sender, responseText);
+	}
 
 	// Make sure this is a page subscription
 	if (data.object == 'page') {
