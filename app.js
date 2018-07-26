@@ -74,7 +74,7 @@ app.get('/webhook/', function (req, res) {
  */
 app.post('/webhook/', function (req, res) {
 	var data = req.body;
-	var paramData = req.body.parameters;
+	var paramData = req.body.result.parameters;
 	console.log(JSON.stringify(data));
 	console.log(JSON.stringify(paramData));
 	if(paramData != null ) {
