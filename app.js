@@ -81,10 +81,11 @@ app.post('/webhook/', function (req, res) {
 				var pincode = paramData.any;
 				app1.requestCoordinate(pincode,(error, results) => {
 					if(error){
-						responseText = 'Error fetching the data';
+						var responseText = 'Error fetching the data';
 					}else {
-						responseText = 
+						var responseText = 
 						`The requested address coordinates are: ${results.latitude} & ${results.longitude}`;
+						console.log(`The requested address coordinates are: ${results.latitude} & ${results.longitude}`);
 					}
 				});
 	sendTextMessage(sender, responseText);
