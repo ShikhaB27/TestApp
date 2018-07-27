@@ -21,7 +21,7 @@ const request = require('request');
 
 var requestCoordinate = (address, callback) => {
 request({
-  url : `https://maps.googleapis.com/maps/api/geocode/json?address=${address}`,
+  url : `https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDvXan48CLKLxPKM-HyZuwtcEnOBrDrWd8&address=${address}`,
   json : true
 },(error, response, body) => {
   //we use stringify() here to format the output
