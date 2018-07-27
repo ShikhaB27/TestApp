@@ -23,7 +23,7 @@ if (!config.SERVER_URL) { //used for ink to static files
 
 
 
-app.set('port', (process.env.PORT || 5000))
+app.set('port', (process.env.PORT || 3000))
 
 //verify request came from facebook
 // app.use(bodyParser.json({
