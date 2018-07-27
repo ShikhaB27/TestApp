@@ -30,6 +30,7 @@ request({
 //   console.log(`Latitude: ${body.results[0].geometry.location.lat}`);
 //   console.log(`Longitude: ${body.results[0].geometry.location.lng}`);
   if(response.statusCode === 200){
+    console.log(body);
     callback(undefined,{
       latitude : body.results[0].geometry.location.lat,
       address: body.results[0].formatted_address,
