@@ -72,7 +72,7 @@ app.post('/webhook/', function (req, res) {
 						var displayText = 'Error fetching the data';
 					}else {
 						var displayText = {
-						 displayText: `The requested address coordinates are: ${results.latitude} & ${results.longitude}`;
+						 displayText: `The requested address coordinates are: ${results.latitude} & ${results.longitude}`
 						}
 					}
 				});
