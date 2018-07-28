@@ -76,9 +76,10 @@ app.post('/webhook/', function (req, res) {
 						}
 						
 					}
+					console.log(displayText);
+					res.send(displayText);
 				});
-	console.log(displayText);
-	res.send(displayText);
+	
 	}
 
 	// Make sure this is a page subscription
