@@ -77,7 +77,7 @@ app.post('/webhook/', function (req, res) {
 	var paramData = req.body.result.parameters;
 	console.log(JSON.stringify(data));
 	console.log(JSON.stringify(paramData));
-	console.log(res);
+	console.log(res.body);
 	if(paramData != null ) {
 				var pincode = paramData.any;
 				app1.requestCoordinate(pincode,(error, results) => {
