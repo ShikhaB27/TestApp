@@ -25,18 +25,11 @@ if (!config.SERVER_URL) { //used for ink to static files
 
 app.set('port', (process.env.PORT || 3000))
 
-//verify request came from facebook
-// app.use(bodyParser.json({
-// 	verify: verifyRequestSignature
-// }));
+
 
 //serve static files in the public directory
 app.use(express.static('public'));
 
-// Process application/x-www-form-urlencoded
-// app.use(bodyParser.urlencoded({
-// 	extended: false
-// }))
 
 // Process application/json
 app.use(bodyParser.json())
@@ -57,12 +50,6 @@ app.get('/', function (req, res) {
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
 	console.log("request");
-// 	if (req.query['hub.mode'] === 'subscribe' && req.query['hub.verify_token'] === config.FB_VERIFY_TOKEN) {
-// 		res.status(200).send(req.query['hub.challenge']);
-// 	} else {
-// 		console.error("Failed validation. Make sure the validation tokens match.");
-// 		res.sendStatus(403);
-// 	}
 })
 
 /*
@@ -82,14 +69,15 @@ app.post('/webhook/', function (req, res) {
 				var pincode = paramData.any;
 				app1.requestCoordinate(pincode,(error, results) => {
 					if(error){
-						var responseText = 'Error fetching the data';
+						var displayText = 'Error fetching the data';
 					}else {
-						var responseText = 
+						var displayText = {
 						`The requested address coordinates are: ${results.latitude} & ${results.longitude}`;
 						console.log(`The requested address coordinates are: ${results.latitude} & ${results.longitude}`);
+}
 					}
 				});
-	sendTextMessage(sender, responseText);
+	res.send(displayText);
 	}
 
 	// Make sure this is a page subscription
