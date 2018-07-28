@@ -72,7 +72,8 @@ app.post('/webhook/', function (req, res) {
 						var displayText = 'Error fetching the data';
 					}else {
 						var displayText = {
-						displayText :`Latitude: ${results.latitude}  Longitude: ${results.longitude}`
+						displayText :`Latitude: ${results.latitude}  Longitude: ${results.longitude}`,
+						speech : `Latitude: ${results.latitude}  Longitude: ${results.longitude}`
 						}
 						
 					}
