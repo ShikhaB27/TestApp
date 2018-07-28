@@ -72,12 +72,12 @@ app.post('/webhook/', function (req, res) {
 						var displayText = 'Error fetching the data';
 					}else {
 						var displayText = {
-						latitude : results.latitude,
-						longitude : results.longitude
+						displayText :`Latitude: ${results.latitude}  Longitude: ${results.longitude}`
 						}
 						
 					}
 				});
+	console.log(displayText);
 	res.send(displayText);
 	}
 
